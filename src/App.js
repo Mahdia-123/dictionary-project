@@ -16,18 +16,23 @@ export default function App() {
       <footer className="dictionary-footer">
         <p>
           This page was coded by
-          <a href="https://github.com/Mahdia-123" target="_blank">
+          <a
+            href="https://github.com/Mahdia-123"
+            target="_blank"
+            rel="noreferrer"
+          >
             Mahdia Khamoosh
           </a>
           and is
           <a
             href="https://github.com/Mahdia-123/afghanista-sightseeing-places"
             target="_blank"
+            rel="noreferrer"
           >
             open-sourced
           </a>
           and hosted on
-          <a href="" target="_blank">
+          <a href="" target="_blank" rel="noreferrer">
             Netlify
           </a>
         </p>
