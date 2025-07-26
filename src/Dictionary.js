@@ -15,16 +15,24 @@ export default function Dictionary() {
 
     let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${keyWord}`;
     axios.get(apiUrl).then(handleResponse);
-    console.log(apiUrl);
   }
   function handleKeywordChange(event) {
     setKeyWord(event.target.value);
   }
   return (
     <div className="Dictionary">
-      <form onSubmit={search}>
-        <input type="search" autoFocus={true} onChange={handleKeywordChange} />
-      </form>
+      <section>
+        <h1>What word do you want to look up?</h1>
+        <form onSubmit={search}>
+          <input
+            type="search"
+            autoFocus={true}
+            onChange={handleKeywordChange}
+          />
+        </form>
+        <div className="Hint">Suggested Words: honey, flower, yoga...</div>
+      </section>
+
       <Results results={results} />
     </div>
   );
