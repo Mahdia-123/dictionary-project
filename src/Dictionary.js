@@ -1,20 +1,28 @@
 import React, { useState } from "react";
 import Results from "./Results";
+import Photos from "./Photos";
 import axios from "axios";
 import "./Dictionary.css";
 export default function Dictionary() {
   let [keyWord, setKeyWord] = useState("");
   let [results, setResults] = useState(null);
+  let [photos, setPhotos] = useState(null);
   function handleResponse(response) {
     console.log(response.data[0]);
     setResults(response.data[0]);
   }
-
+  function handlePexelResponse(response) {
+    console.log(response.data);
+    setPhotos(response.data.photos);
+  }
   function search(event) {
     event.preventDefault();
-
+    let pexelApiKey = "8tc45bb70811ad02c7716f84fe4ocbe3";
     let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${keyWord}`;
+
     axios.get(apiUrl).then(handleResponse);
+    let pexelApiUrl = `https://api.shecodes.io/images/v1/search?query=${keyWord}&key=${pexelApiKey}`;
+    axios.get(pexelApiUrl).then(handlePexelResponse);
   }
   function handleKeywordChange(event) {
     setKeyWord(event.target.value);
@@ -34,6 +42,8 @@ export default function Dictionary() {
       </section>
 
       <Results results={results} />
+
+      <Photos photos={photos} />
     </div>
   );
 }
