@@ -32,7 +32,11 @@ export default function App() {
             open-sourced
           </a>
           and hosted on
-          <a href="" target="_blank" rel="noreferrer">
+          <a
+            href="https://vanilla-dictionary-app.netlify.app/"
+            target="_blank"
+            rel="noreferrer"
+          >
             Netlify
           </a>
         </p>
