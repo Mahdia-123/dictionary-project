@@ -1,0 +1,71 @@
+.DailyChallenge {
+  text-align: center;
+  padding: 20px;
+}
+.challengeh1 {
+  color: #9670f4;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+.challengeBtn {
+  border: 1px #9670f4 solid;
+  padding: 10px 30px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 30px;
+  color: #9670f4;
+  background-color: #f9f8fe;
+  margin: 30px 0;
+  transition: all 350ms ease-in-out;
+}
+.challengeBtn:hover {
+  color: #6348a8;
+}
+.challenge-card {
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgb(0 0 0 / 10%);
+  margin: 20px 0;
+  text-align: left;
+}
+.challenge-card strong {
+  color: #9670f4;
+}
+
+.challenge-card h2 {
+  color: #9670f4;
+  text-align: center;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.challenge-card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.challenge-card li {
+  margin: 6px 0;
+  text-align: left;
+}
+.toggleBtn {
+  border: 1px #9670f4 solid;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 30px;
+  color: #9670f4;
+  background-color: #f9f8fe;
+  margin: 10px auto;
+  display: block;
+  transition: all 350ms ease-in-out;
+}
+.toggleBtn:hover {
+  color: #6348a8;
+}
+.answer {
+  margin-top: 10px;
+  text-align: center;
+  color: #9670f4;
+  font-weight: bold;
+}

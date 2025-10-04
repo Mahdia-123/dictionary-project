@@ -12,12 +12,29 @@ a .App-header {
   margin: 30px 0;
 }
 
-.App-logo {
-  max-width: 200px;
-  display: block;
-  margin: 0 auto;
-}
 .dictionary-footer {
   text-align: center;
   margin: 30px 0;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* use align-items instead of justify-items */
+  padding: 5px 40px; /* optional for spacing */
+  background: #f9f8fe; /* background so shadow is visible */
+  border-bottom: 1px solid #e0e0e0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+.navlink {
+  text-decoration: none;
+  margin-left: 15px;
+  font-weight: bold;
+  transition: all 350ms ease-in-out;
+}
+.navlink:hover {
+  color: #6348a8;
+}
+.logo {
+  height: 50px;
+  width: 50px;
 }

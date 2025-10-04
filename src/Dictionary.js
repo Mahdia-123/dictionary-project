@@ -17,11 +17,10 @@ export default function Dictionary() {
   }
   function search(event) {
     event.preventDefault();
-    let pexelApiKey = "8tc45bb70811ad02c7716f84fe4ocbe3";
     let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${keyWord}`;
-
     axios.get(apiUrl).then(handleResponse);
-    let pexelApiUrl = `https://api.shecodes.io/images/v1/search?query=${keyWord}&key=${pexelApiKey}`;
+
+    let pexelApiUrl = `https://api.shecodes.io/images/v1/search?query=${keyWord}&key=${process.env.REACT_APP_PEXELS_API_KEY}`;
     axios.get(pexelApiUrl).then(handlePexelResponse);
   }
   function handleKeywordChange(event) {
@@ -38,6 +37,7 @@ export default function Dictionary() {
             onChange={handleKeywordChange}
           />
         </form>
+
         <div className="Hint">Suggested Words: honey, flower, yoga...</div>
       </section>
 

@@ -1,4 +1,10 @@
 .Photos img {
   border-radius: 6px;
   margin-bottom: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+.Photos img:hover {
+  filter: brightness(70%); /* darker (reduce brightness to 70%) */
+  transform: scale(1.05);
 }
