@@ -5,11 +5,11 @@ import "./DailyChallenge.css";
 export default function DailyChallenge() {
   const [challenge, setChallenge] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [showAnswer, setShowAnswer] = useState(false); // New state for toggling answer
+  const [showAnswer, setShowAnswer] = useState(false);
 
   async function fetchChallenge() {
     setLoading(true);
-    setShowAnswer(false); // Hide answer whenever a new challenge is fetched
+    setShowAnswer(false);
     try {
       const completion = await openai.chat.completions.create({
         model: "gpt-4o-mini",
@@ -35,7 +35,6 @@ export default function DailyChallenge() {
 
       const data = completion.choices[0].message.content;
 
-      // Sometimes AI sends extra text around JSON, so we try to parse safely
       const jsonStart = data.indexOf("{");
       const jsonEnd = data.lastIndexOf("}") + 1;
       const jsonString = data.substring(jsonStart, jsonEnd);
@@ -76,7 +75,6 @@ export default function DailyChallenge() {
             ))}
           </ul>
 
-          {/* Toggle Answer Button */}
           <button
             onClick={() => setShowAnswer(!showAnswer)}
             className="toggleBtn"
