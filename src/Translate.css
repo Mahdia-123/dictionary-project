@@ -1,0 +1,45 @@
+.translate-section {
+  background: none !important;
+}
+.translate-section h3 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.radio-group {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+  justify-content: center;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.radio-label input[type="radio"] {
+  accent-color: #9670f4;
+}
+
+.loading {
+  color: #9670f4;
+  font-style: italic;
+  text-align: center;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+}
+
+.result {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  text-align: center;
+}
+.result strong {
+  color: #9670f4;
+}

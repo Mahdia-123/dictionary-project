@@ -23,3 +23,38 @@
   line-height: 1.5;
   margin-top: 5px;
 }
+.HistorySection {
+  margin-top: 2rem;
+  padding: 1rem;
+  background: #f9fafb;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.HistorySection h2 {
+  margin-bottom: 0.8rem;
+  color: #111827;
+}
+
+.HistoryList {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.history-btn {
+  background: #f8eeff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  color: #9670f4;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.history-btn:hover {
+  background: #dbeafe;
+}
