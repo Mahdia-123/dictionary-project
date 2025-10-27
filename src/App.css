@@ -34,3 +34,8 @@ a .App-header {
   height: 50px;
   width: 50px;
 }
+@media (max-width: 960px) {
+  .navbar {
+    justify-content: center;
+  }
+}
