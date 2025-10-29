@@ -65,7 +65,6 @@ export default function Translate({ word }) {
     fetchTranslation();
   }, [word, selectedLang, openAiKey]);
 
-  // Show nothing if no word is entered
   if (!word) return null;
 
   return (

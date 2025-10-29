@@ -51,6 +51,18 @@ const AboutDictionaryApp = () => {
             </div>
           </li>
           <li>
+            <span className="icon">🌐</span>
+            <div>
+              <strong>Translate between multiple languages</strong>
+              <p>
+                Instantly translate words between <strong>English</strong>,
+                <strong> Persian</strong>, and <strong>Pashto</strong> — plus
+                get translations into <strong>Turkish</strong> and other
+                languages. Perfect for bilingual learners and travelers.
+              </p>
+            </div>
+          </li>
+          <li>
             <span className="icon">🤖</span>
             <div>
               <strong>AI-powered Daily Challenge</strong>
