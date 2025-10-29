@@ -76,13 +76,6 @@ export default function Dictionary() {
         <div className="Hint">Suggested Words: honey, flower, yoga...</div>
       </section>
 
-      {/* Translate section appears only if keyWord is not empty */}
-      {keyWord && (
-        <section className="translate">
-          <Translate word={keyWord} />
-        </section>
-      )}
-
       {history.length > 0 && (
         <section className="HistorySection">
           <h2>Search History</h2>
@@ -98,6 +91,12 @@ export default function Dictionary() {
               </li>
             ))}
           </ul>
+        </section>
+      )}
+
+      {keyWord && (
+        <section className="translate">
+          <Translate word={keyWord} />
         </section>
       )}
 

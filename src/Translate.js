@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Polyglot from "node-polyglot";
 import "./Translate.css";
 
-const polyglot = new Polyglot(); // stable instance
+const polyglot = new Polyglot();
 
 export default function Translate({ word }) {
   const [selectedLang, setSelectedLang] = useState("");
@@ -14,7 +14,7 @@ export default function Translate({ word }) {
 
   useEffect(() => {
     if (!word || !selectedLang) {
-      setTranslation(""); // reset translation if no language is selected
+      setTranslation("");
       return;
     }
 
@@ -41,7 +41,7 @@ export default function Translate({ word }) {
                   { role: "system", content: "You are a helpful translator." },
                   {
                     role: "user",
-                    content: `Translate the English word "${word}" into ${selectedLang}. Only return the translation.`,
+                    content: `Translate the word "${word}" into ${selectedLang}. Only return the translation.`,
                   },
                 ],
                 max_tokens: 50,
@@ -65,14 +65,14 @@ export default function Translate({ word }) {
     fetchTranslation();
   }, [word, selectedLang, openAiKey]);
 
-  // Render translation section only if a word exists
+  // Show nothing if no word is entered
   if (!word) return null;
 
   return (
     <section className="translate-section">
       <h3>Select Language:</h3>
       <div className="radio-group">
-        {["Persian", "Pashto", "Turkish"].map((lang) => (
+        {["English", "Persian", "Pashto", "Turkish"].map((lang) => (
           <label key={lang} className="radio-label">
             <input
               type="radio"
