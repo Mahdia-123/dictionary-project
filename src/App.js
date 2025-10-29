@@ -25,7 +25,7 @@ export default function App() {
             About
           </Link>
           <Link to="/challenge" className="navlink">
-            Daily Challenge
+            DailyChallenge
           </Link>
         </div>
       </nav>
