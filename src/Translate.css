@@ -1,10 +1,12 @@
 .translate-section {
   background: none !important;
 }
+
 .translate-section h3 {
   text-align: center;
   margin-bottom: 10px;
 }
+
 .radio-group {
   display: flex;
   gap: 1.5rem;
@@ -40,6 +42,16 @@
   font-size: 1.1rem;
   text-align: center;
 }
+
 .result strong {
   color: #9670f4;
+}
+
+/* ✅ Responsive styling for smaller screens */
+@media (max-width: 960px) {
+  .radio-group {
+    flex-direction: column; /* Stack vertically */
+    align-items: center; /* Center the group */
+    gap: 0.8rem; /* Smaller gap for compact look */
+  }
 }
