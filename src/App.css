@@ -1,12 +1,25 @@
+html,
 body {
-  background: #f9f8fe;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
+
+body {
+  background: linear-gradient(to top, #7028e4 0%, #e5b2ca 100%);
+  background-attachment: fixed; /* optional: makes it stay in place on scroll */
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .App {
-  max-width: 960px;
-  margin: 0 auto;
+  min-height: 100vh;
+  max-width: 1100px;
+  margin: 70px auto;
 }
+
 a {
-  color: #9670f4;
+  color: white;
 }
 a .App-header {
   margin: 30px 0;
@@ -17,7 +30,7 @@ a .App-header {
   justify-content: space-between;
   align-items: center;
   padding: 5px 40px;
-  background: #f9f8fe;
+  background: #a374d5;
   border-bottom: 1px solid #e0e0e0;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
@@ -33,6 +46,7 @@ a .App-header {
 .logo {
   height: 50px;
   width: 50px;
+  border-radius: 50%;
 }
 @media (max-width: 960px) {
   .navbar {

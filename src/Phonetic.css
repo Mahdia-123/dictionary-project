@@ -10,6 +10,7 @@
   font-size: 12px;
   transition: 200ms all ease-in-out;
   margin-right: 15px;
+  color: #9670f4;
 }
 .Phonetic a:hover {
   color: white;

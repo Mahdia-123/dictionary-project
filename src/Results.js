@@ -1,32 +1,32 @@
 import React from "react";
-import Meaning from "./Meaning";
-import Phonetic from "./Phonetic";
+import Synonyms from "./Synonyms";
 import "./Results.css";
 
-export default function Results(props) {
-  if (props.results) {
-    return (
-      <div className="Results">
-        <section>
-          <h2>{props.results.word}</h2>
-          {props.results.phonetics.map(function (phonetic, index) {
-            return (
-              <div key={index}>
-                <Phonetic phonetic={phonetic} />
-              </div>
-            );
-          })}
-        </section>
-        {props.results.meanings.map(function (meaning, index) {
-          return (
-            <section key={index}>
-              <Meaning meaning={meaning} />
-            </section>
-          );
-        })}
-      </div>
-    );
-  } else {
-    return null;
-  }
+export default function Results({ results }) {
+  if (!results || !results.meanings) return null;
+
+  return (
+    <section className="results-section">
+      {results.meanings.map((meaning, idx) => (
+        <div key={idx} className="meaning">
+          {/* Only show POS name */}
+          <h3 className="pos-name">{meaning.partOfSpeech}</h3>
+
+          {meaning.definitions.map((def, i) => (
+            <div key={i} className="definition-block">
+              <p className="definition">{def.definition}</p>
+              {def.example && (
+                <p className="example">
+                  <em>{def.example}</em>
+                </p>
+              )}
+              {def.synonyms && def.synonyms.length > 0 && (
+                <Synonyms synonyms={def.synonyms} />
+              )}
+            </div>
+          ))}
+        </div>
+      ))}
+    </section>
+  );
 }

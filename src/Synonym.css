@@ -2,6 +2,7 @@
   margin: 20px 0 0;
   padding: 0;
 }
+
 .Synonyms li {
   display: inline-block;
   padding: 10px 15px;
@@ -10,4 +11,11 @@
   margin-right: 10px;
   line-height: 1;
   font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s all ease-in-out;
+}
+
+.Synonyms li:hover {
+  background-color: #f8eeff;
+  color: #9670f4;
 }

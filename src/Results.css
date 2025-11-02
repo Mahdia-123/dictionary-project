@@ -1,5 +1,35 @@
-.Results h2 {
-  font-size: 34px;
-  font-weight: 600;
-  line-height: 1.5;
+.results-section {
+  margin-top: 20px;
+}
+
+.meaning {
+  margin-bottom: 20px;
+}
+
+.pos-name {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-transform: capitalize; /* Noun, Verb, Adjective */
+}
+
+.definition-block {
+  margin-bottom: 15px;
+}
+
+.definition {
+  font-size: 16px;
+}
+
+.example {
+  color: #70757a;
+  font-style: italic;
+  margin-top: 5px;
+}
+
+.synonyms {
+  margin-top: 5px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  padding: 8px 16px;
 }

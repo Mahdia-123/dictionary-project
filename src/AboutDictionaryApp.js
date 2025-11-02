@@ -2,91 +2,69 @@ import React from "react";
 import "./AboutDictionaryApp.css";
 
 const AboutDictionaryApp = () => {
+  const items = [
+    {
+      title: "Phonetics",
+      text: "The phonetic feature provides the correct pronunciation of each word. English words use IPA notations, while Persian words use Latin letters. You can also listen to the word being pronounced.",
+      img: "/images/phonetic.webp",
+    },
+    {
+      title: "Definition",
+      text: "Definitions provide clear meanings of words. English definitions are grouped by part of speech, while Persian entries include AI-generated explanations for better understanding.",
+      img: "/images/definition.webp",
+    },
+    {
+      title: "Example",
+      text: "Example sentences illustrate how each word is used naturally in context. Persian words also have AI-generated examples when needed.",
+      img: "/images/example.webp",
+    },
+    {
+      title: "Synonyms",
+      text: "Synonyms help expand your vocabulary by showing alternative words with similar meanings, allowing you to use the right word in different contexts.",
+      img: "/images/synonyms.png",
+    },
+    {
+      title: "Usage & Context",
+      text: "This section explains common usage, grammar tips, and contextual applications of each word to improve comprehension and fluency.",
+      img: "/images/context.jpg",
+    },
+    {
+      title: "Photos & Visual Learning",
+      text: "Relevant images help visual learners associate meaning quickly. Photos are available for both English and Persian words.",
+      img: "/images/visual-learning.jpg",
+    },
+    {
+      title: "Search History",
+      text: "Keeps track of your recent words, allowing you to revisit past searches quickly. Up to five entries are saved for easy review.",
+      img: "/images/history.jpg",
+    },
+    {
+      title: "Multi-Language Support",
+      text: "Supports English and Persian. English words come from dictionary APIs, while Persian entries are AI-enhanced for clarity and examples.",
+      img: "/images/multi-language.png",
+    },
+  ];
+
   return (
-    <section className="about-container">
-      <div className="about-image">
-        {/* Replace with your actual image */}
-        <img src="images/dictionary-app.png" alt="Dictionary App preview" />
-      </div>
-
-      <div className="about-content">
-        <span className="about-tag">About</span>
-        <h1>Dictionary App — your friendly word companion</h1>
-        <p className="about-intro">
-          We believe learning new words should be simple, fun, and inspiring.
-          Dictionary App gives you everything you need to truly understand and
-          enjoy language — not just the definitions.
-        </p>
-
-        <ul className="feature-list">
-          <li>
-            <span className="icon">📖</span>
-            <div>
-              <strong>Clear definitions</strong>
-              <p>Accurate, concise explanations for thousands of words.</p>
-            </div>
-          </li>
-          <li>
-            <span className="icon">🔊</span>
-            <div>
-              <strong>Pronunciation & phonetics</strong>
-              <p>Hear how words are spoken and read phonetic transcriptions.</p>
-            </div>
-          </li>
-          <li>
-            <span className="icon">🗣️</span>
-            <div>
-              <strong>Synonyms, examples & parts of speech</strong>
-              <p>
-                Contextual examples, grammar info, and alternative words to
-                expand your vocabulary.
-              </p>
-            </div>
-          </li>
-          <li>
-            <span className="icon">🖼️</span>
-            <div>
-              <strong>Pictures for every word</strong>
-              <p>Helpful visuals that make meanings easier to remember.</p>
-            </div>
-          </li>
-          <li>
-            <span className="icon">🌐</span>
-            <div>
-              <strong>Translate between multiple languages</strong>
-              <p>
-                Instantly translate words between <strong>English</strong>,
-                <strong> Persian</strong>, and <strong>Pashto</strong> — plus
-                get translations into <strong>Turkish</strong> and other
-                languages. Perfect for bilingual learners and travelers.
-              </p>
-            </div>
-          </li>
-          <li>
-            <span className="icon">🤖</span>
-            <div>
-              <strong>AI-powered Daily Challenge</strong>
-              <p>
-                Get a daily word and a 4-question quiz to test meaning, usage,
-                pronunciation, and synonyms — perfect for building streaks and
-                confidence.
-              </p>
-            </div>
-          </li>
-        </ul>
-
-        <p className="about-footer">
-          Whether you’re a student, writer, or just curious about words,
-          Dictionary App helps words come alive — one day, one word, one
-          challenge at a time.
-        </p>
-
-        <div className="about-buttons">
-          <button className="btn-primary">Get the App</button>
-          <button className="btn-outline">Learn More</button>
+    <div className="about-page">
+      <h1 className="aboutHead">About This Dictionary App</h1>
+      {items.map((item, index) => (
+        <div
+          className={`about-item ${
+            index % 2 === 0 ? "text-left" : "text-right"
+          }`}
+          key={index}
+        >
+          <div className="about-text">
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </div>
+          <div className="about-image">
+            <img src={item.img} alt={`${item.title} illustration`} />
+          </div>
         </div>
-      </div>
-    </section>
+      ))}
+    </div>
   );
 };
 

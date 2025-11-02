@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 import Dictionary from "./Dictionary";
-import DailyChallenge from "./DailyChallenge"; // import your new component
+import DailyChallenge from "./DailyChallenge";
 import AboutDictionaryApp from "./AboutDictionaryApp";
 import "./App.css";
 

@@ -1,21 +1,54 @@
 .Dictionary section {
-  background: white;
+  background: rgb(248, 244, 252);
   padding: 30px;
   border-radius: 8px;
-  box-shadow: 0 5px 15px rgb(0 0 0 / 10%);
   margin: 20px 0;
+  box-shadow: 0 0 8px rgba(229, 178, 202, 0.9),
+    0 0 16px rgba(182, 133, 234, 0.85);
 }
+
 .Dictionary h1 {
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 20px;
 }
-.Dictionary input {
-  width: 100%;
-  padding: 7px 5px;
-  border: 1px solid #ddd;
-  color: rgb(21, 21, 21);
+.search-form {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.search-form input[type="text"] {
+  flex: 1;
+  padding: 8px 12px;
+  font-size: 16px;
   border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.search-form select {
+  padding: 8px 12px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: #9670f4;
+  color: white;
+  font-weight: bold;
+}
+
+.search-form button {
+  background-color: #9670f4;
+  color: white;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.search-form button:hover {
+  border: #9670f4 1px solid;
+  color: #9670f4;
+  background: none;
 }
 .Dictionary .Hint {
   color: rgb(167, 166, 166);
@@ -45,16 +78,73 @@
 }
 
 .history-btn {
-  background: #f8eeff;
+  background: #efdefc;
   border: none;
   border-radius: 8px;
   padding: 8px 16px;
   cursor: pointer;
   color: #9670f4;
-  font-weight: 500;
+  font-weight: bold;
   transition: background 0.2s;
 }
 
 .history-btn:hover {
-  background: #dbeafe;
+  background: rgba(182, 133, 234, 0.85);
+  color: white;
+}
+.PhoneticSection {
+  margin-top: 20px;
+}
+
+.WordTitle {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.PersianPronunciation {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.ListenButton {
+  padding: 6px 15px;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+  font-weight: bold;
+  cursor: pointer;
+}
+.persian-Phonetic {
+  border: 1px solid #ddd;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 12px;
+  transition: 300ms all ease-in-out;
+  margin-right: 15px;
+  color: #9670f4;
+  background-color: white;
+}
+.persian-Phonetic:hover {
+  color: white;
+  background-color: #9670f4;
+}
+.pronunciation {
+  color: gray;
+  font-weight: bold;
+}
+@media (max-width: 960px) {
+  .search-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-form input[type="text"],
+  .search-form select,
+  .search-form button {
+    width: 100%;
+  }
 }
