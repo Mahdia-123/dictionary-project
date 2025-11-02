@@ -47,7 +47,10 @@ const AboutDictionaryApp = () => {
 
   return (
     <div className="about-page">
-      <h1 className="aboutHead">About This Dictionary App</h1>
+      <h1 className="aboutHead">
+        {" "}
+        <strong>About</strong> This <strong>Dictionary </strong>App
+      </h1>
       {items.map((item, index) => (
         <div
           className={`about-item ${

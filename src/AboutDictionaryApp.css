@@ -57,6 +57,9 @@
   color: #7028e4;
   text-align: center !important;
 }
+.aboutHead strong {
+  font-weight: bold;
+}
 .about-text h3 {
   font-size: 22px;
   margin-bottom: 12px;
@@ -87,5 +90,41 @@
 
   .logo {
     display: none;
+  }
+  .aboutHead {
+    font-size: 25px;
+    font-weight: bold;
+  }
+  .about-page {
+    padding: 10px; /* reduce padding */
+    gap: 30px; /* reduce vertical gap */
+  }
+
+  .about-item {
+    grid-template-columns: 1fr !important;
+    grid-template-areas:
+      "text"
+      "image" !important;
+    gap: 15px;
+    width: 100%; /* make item fill the parent */
+    max-width: 600px; /* optional: limit width for readability */
+    margin: 0 auto; /* center item horizontally */
+    padding: 15px; /* reduce inner padding */
+  }
+
+  .about-text h3 {
+    font-size: 20px; /* slightly smaller for small screens */
+  }
+
+  .about-text p {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .about-image img {
+    width: 100%;
+    height: auto; /* let image scale naturally */
+    max-height: 250px; /* optional: limit max height */
+    object-fit: cover;
   }
 }
