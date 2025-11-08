@@ -72,6 +72,30 @@
   line-height: 1.6;
   color: white;
 }
+.about-intro {
+  max-width: 1000px;
+  margin: 0 auto 40px auto;
+  text-align: center;
+  color: white;
+  font-size: 18px;
+  line-height: 1.8;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 0 15px rgba(182, 133, 234, 0.5),
+    0 0 30px rgba(112, 40, 228, 0.4);
+}
+
+.about-intro strong {
+  color: #7028e4;
+}
+
+@media (max-width: 960px) {
+  .about-intro {
+    font-size: 16px;
+    padding: 20px;
+  }
+}
 
 @media (max-width: 960px) {
   .about-item {
@@ -96,8 +120,8 @@
     font-weight: bold;
   }
   .about-page {
-    padding: 10px; /* reduce padding */
-    gap: 30px; /* reduce vertical gap */
+    padding: 10px;
+    gap: 30px;
   }
 
   .about-item {
@@ -106,14 +130,14 @@
       "text"
       "image" !important;
     gap: 15px;
-    width: 100%; /* make item fill the parent */
-    max-width: 600px; /* optional: limit width for readability */
-    margin: 0 auto; /* center item horizontally */
-    padding: 15px; /* reduce inner padding */
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 15px;
   }
 
   .about-text h3 {
-    font-size: 20px; /* slightly smaller for small screens */
+    font-size: 20px;
   }
 
   .about-text p {
@@ -123,8 +147,7 @@
 
   .about-image img {
     width: 100%;
-    height: auto; /* let image scale naturally */
-    max-height: 250px; /* optional: limit max height */
-    object-fit: cover;
+    height: auto;
+    max-height: 250px;
   }
 }

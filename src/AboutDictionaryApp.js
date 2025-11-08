@@ -48,9 +48,25 @@ const AboutDictionaryApp = () => {
   return (
     <div className="about-page">
       <h1 className="aboutHead">
-        {" "}
-        <strong>About</strong> This <strong>Dictionary </strong>App
+        <strong>About</strong> This <strong>Dictionary</strong> App
       </h1>
+
+      <div className="about-intro">
+        <p>
+          Welcome to the <strong>English–Persian Dictionary App</strong> — a
+          smart, interactive tool designed to help learners, translators, and
+          language enthusiasts explore words with depth and clarity. This app
+          combines reliable dictionary APIs for English with AI-powered Persian
+          translations, ensuring both accuracy and natural context.
+        </p>
+        <p>
+          Whether you're learning new words, improving pronunciation, or
+          exploring meanings across languages, our app makes language learning
+          simple, visual, and engaging. From definitions and phonetics to
+          examples and images — everything you need is right here in one place.
+        </p>
+      </div>
+
       {items.map((item, index) => (
         <div
           className={`about-item ${
