@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import Results from "./Results";
 import Photos from "./Photos";
-import Phonetic from "./Phonetic";
 
 import "./Dictionary.css";
 
@@ -11,7 +10,7 @@ export default function Dictionary() {
   const [language, setLanguage] = useState("English");
   const [results, setResults] = useState(null);
   const [photos, setPhotos] = useState(null);
-  const [pronunciation, setPronunciation] = useState(""); // Persian
+  const [pronunciation, setPronunciation] = useState("");
   const [history, setHistory] = useState(() => {
     const saved = localStorage.getItem("searchHistory");
     return saved ? JSON.parse(saved) : [];
@@ -63,7 +62,6 @@ export default function Dictionary() {
       try {
         const openAiKey = process.env.REACT_APP_OPENAI_API_KEY;
 
-        // --- Persian dictionary entry ---
         const prompt = `
 Create a Persian dictionary entry for "${keyWord}".
 Include part of speech, definitions, examples, synonyms.
@@ -106,7 +104,6 @@ Return JSON like:
         }
         setResults(entry);
 
-        // --- Latin pronunciation ---
         const pronPrompt = `Write the Persian word "${keyWord}" in Latin letters for pronunciation. Return only the text.`;
         const pronRes = await fetch(
           "https://api.openai.com/v1/chat/completions",
@@ -132,7 +129,6 @@ Return JSON like:
         const pronData = await pronRes.json();
         setPronunciation(pronData.choices[0].message.content.trim());
 
-        // --- Photos (translate Persian to English for search) ---
         const translationPrompt = `
 Translate this Persian word "${keyWord}" to a short English word/phrase for image search.
 Return only the translated text.`;
@@ -173,7 +169,6 @@ Return only the translated text.`;
     }
   };
 
-  // Group English meanings by part of speech
   const groupedMeanings = {};
   if (language === "English" && results && results.meanings) {
     results.meanings.forEach((meaning) => {
@@ -235,12 +230,35 @@ Return only the translated text.`;
           <section className="PhoneticSection">
             <h2>{results.word}</h2>
 
+            {/* ✅ English pronunciation plays directly on click */}
+            {/* ✅ English pronunciation plays directly on click */}
             {language === "English" &&
               results.phonetics &&
               results.phonetics.map((phon, idx) => (
-                <Phonetic key={idx} phonetic={phon} />
+                <div key={idx} className="PhoneticSection">
+                  <button
+                    className="persian-Phonetic"
+                    onClick={() => {
+                      const utterance = new SpeechSynthesisUtterance(
+                        results.word
+                      );
+                      utterance.lang = "en-US";
+                      window.speechSynthesis.speak(utterance);
+                    }}
+                  >
+                    Listen
+                  </button>
+                  {/* phonetic text after button */}
+                  <span
+                    className="phonetic-text"
+                    style={{ marginLeft: "10px" }}
+                  >
+                    {phon.text || ""}
+                  </span>
+                </div>
               ))}
 
+            {/* ✅ Persian pronunciation stays the same */}
             {language === "Persian" && pronunciation && (
               <div className="PersianPronunciation">
                 <button
@@ -253,7 +271,7 @@ Return only the translated text.`;
                 >
                   Listen
                 </button>
-                <span className="pronunciation">/{pronunciation}/</span>
+                <span className="phonetic-text">/{pronunciation}/</span>
               </div>
             )}
           </section>

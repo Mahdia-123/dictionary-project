@@ -8,6 +8,9 @@ export default function DailyChallenge() {
   const [answers, setAnswers] = useState({});
   const [score, setScore] = useState(null);
 
+  // ✅ Track which answers were correct
+  const [checkedAnswers, setCheckedAnswers] = useState({});
+
   // Fallback challenge if OpenAI API fails or rate limit is hit
   const fallbackChallenge = {
     word: "Eloquent",
@@ -39,6 +42,7 @@ export default function DailyChallenge() {
     setLoading(true);
     setScore(null);
     setAnswers({});
+    setCheckedAnswers({});
     try {
       const completion = await openai.chat.completions.create({
         model: "gpt-4o-mini",
@@ -79,7 +83,10 @@ export default function DailyChallenge() {
       const jsonStart = data.indexOf("{");
       const jsonEnd = data.lastIndexOf("}") + 1;
       const jsonString = data.substring(jsonStart, jsonEnd);
-      setChallenge(JSON.parse(jsonString));
+      const parsed = JSON.parse(jsonString);
+      if (!Array.isArray(parsed.quiz)) parsed.quiz = [];
+      if (!Array.isArray(parsed.blanks)) parsed.blanks = [];
+      setChallenge(parsed);
     } catch (err) {
       console.error("Error fetching challenge:", err);
       if (err.status === 429 || err.message.includes("429")) {
@@ -99,6 +106,7 @@ export default function DailyChallenge() {
   function checkAnswers() {
     if (!challenge) return;
     let correct = 0;
+    const checked = {};
 
     // Check the single blank
     const blank = challenge.blanks[0];
@@ -107,15 +115,19 @@ export default function DailyChallenge() {
       answers["blank_0"].trim().toLowerCase() === blank.answer.toLowerCase()
     ) {
       correct++;
+      checked["blank_0"] = true;
+    } else {
+      checked["blank_0"] = false;
     }
 
     // Check all quizzes
     challenge.quiz.forEach((q, i) => {
-      if (answers[`quiz_${i}`] === q.answer) {
-        correct++;
-      }
+      const isCorrect = answers[`quiz_${i}`] === q.answer;
+      if (isCorrect) correct++;
+      checked[`quiz_${i}`] = isCorrect;
     });
 
+    setCheckedAnswers(checked);
     setScore(correct);
   }
 
@@ -141,11 +153,11 @@ export default function DailyChallenge() {
           </p>
 
           {/* ✅ Single fill-in-the-blank section */}
-          {challenge.blanks && challenge.blanks.length > 0 && (
+          {Array.isArray(challenge.blanks) && challenge.blanks.length > 0 && (
             <div className="blank-card">
               <h3>Fill in the Blank</h3>
               <p className="blank-sentence">
-                {challenge.blanks[0].sentence.includes("_____")
+                {challenge.blanks[0].sentence?.includes("_____")
                   ? challenge.blanks[0].sentence
                   : challenge.blanks[0].sentence + " _____"}
               </p>
@@ -156,59 +168,75 @@ export default function DailyChallenge() {
                 onChange={(e) => handleAnswerChange("blank_0", e.target.value)}
                 className="blank-input"
               />
+              {score !== null &&
+                (checkedAnswers["blank_0"] ? (
+                  <span className="tick"> ✅</span>
+                ) : (
+                  <span className="cross"> ❌</span>
+                ))}
             </div>
           )}
 
           {/* ✅ Quiz section (synonym + true/false) */}
           <div className="quiz-container">
-            {challenge.quiz.map((q, i) => (
-              <div key={i} className="quiz-card">
-                <p className="quiz-question">{q.question}</p>
+            {Array.isArray(challenge.quiz) &&
+              challenge.quiz.map((q, i) => (
+                <div key={i} className="quiz-card">
+                  <p className="quiz-question">{q.question}</p>
 
-                {q.type === "synonym" &&
-                  q.options.map((opt, idx) => (
-                    <label key={idx} className="option-label">
-                      <input
-                        type="radio"
-                        name={`quiz_${i}`}
-                        value={opt.charAt(0)}
-                        checked={answers[`quiz_${i}`] === opt.charAt(0)}
-                        onChange={() =>
-                          handleAnswerChange(`quiz_${i}`, opt.charAt(0))
-                        }
-                      />
-                      {opt}
-                    </label>
-                  ))}
+                  {q.type === "synonym" &&
+                    q.options.map((opt, idx) => (
+                      <label key={idx} className="option-label">
+                        <input
+                          type="radio"
+                          name={`quiz_${i}`}
+                          value={opt.charAt(0)}
+                          checked={answers[`quiz_${i}`] === opt.charAt(0)}
+                          onChange={() =>
+                            handleAnswerChange(`quiz_${i}`, opt.charAt(0))
+                          }
+                        />
+                        {opt}
+                      </label>
+                    ))}
 
-                {q.type === "truefalse" && (
-                  <div className="tf-options">
-                    <label>
-                      <input
-                        type="radio"
-                        name={`quiz_${i}`}
-                        value="True"
-                        checked={answers[`quiz_${i}`] === "True"}
-                        onChange={() => handleAnswerChange(`quiz_${i}`, "True")}
-                      />
-                      True
-                    </label>
-                    <label>
-                      <input
-                        type="radio"
-                        name={`quiz_${i}`}
-                        value="False"
-                        checked={answers[`quiz_${i}`] === "False"}
-                        onChange={() =>
-                          handleAnswerChange(`quiz_${i}`, "False")
-                        }
-                      />
-                      False
-                    </label>
-                  </div>
-                )}
-              </div>
-            ))}
+                  {q.type === "truefalse" && (
+                    <div className="tf-options">
+                      <label>
+                        <input
+                          type="radio"
+                          name={`quiz_${i}`}
+                          value="True"
+                          checked={answers[`quiz_${i}`] === "True"}
+                          onChange={() =>
+                            handleAnswerChange(`quiz_${i}`, "True")
+                          }
+                        />
+                        True
+                      </label>
+                      <label>
+                        <input
+                          type="radio"
+                          name={`quiz_${i}`}
+                          value="False"
+                          checked={answers[`quiz_${i}`] === "False"}
+                          onChange={() =>
+                            handleAnswerChange(`quiz_${i}`, "False")
+                          }
+                        />
+                        False
+                      </label>
+                    </div>
+                  )}
+
+                  {score !== null &&
+                    (checkedAnswers[`quiz_${i}`] ? (
+                      <span className="tick"> ✅</span>
+                    ) : (
+                      <span className="cross"> ❌</span>
+                    ))}
+                </div>
+              ))}
           </div>
 
           <button onClick={checkAnswers} className="checkBtn">
@@ -217,7 +245,8 @@ export default function DailyChallenge() {
 
           {score !== null && (
             <p className="score">
-              You got {score} out of {1 + challenge.quiz.length} correct!
+              You got {score} out of {1 + (challenge.quiz?.length || 0)}{" "}
+              correct!
             </p>
           )}
         </div>

@@ -142,8 +142,20 @@
   text-align: center;
 }
 
+.tick {
+  color: #4caf50; /* green */
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.cross {
+  color: #ff5252; /* red */
+  font-weight: bold;
+  font-size: 18px;
+}
+
 /* Responsive layout */
-@media (max-width: 768px) {
+@media (max-width: 960px) {
   .challenge-card {
     padding: 20px;
   }
